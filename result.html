@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ranking Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Resume Ranking Results</h1>
+
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>Rank</th>
+            <th>Resume</th>
+            <th>Similarity Score</th>
+        </tr>
+        {% for idx, result in enumerate(results, start=1) %}
+        <tr>
+            <td>{{ idx }}</td>
+            <td>{{ result.Resume }}</td>
+            <td>{{ result.Score }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+    <a href="/download">
+        <button>Download HR Report (CSV)</button>
+    </a>
+    <br><br>
+    <a href="/">← Rank Another Batch</a>
+</body>
+</html>
